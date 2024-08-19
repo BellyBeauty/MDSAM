@@ -1,6 +1,6 @@
 python evaluation.py \
-    --data_path /www/gsx/SOD \
+    --data_path /path/SOD \
     --img_size 512 \
-    --checkpoint output/model_epoch59.pth \
-    --gpu_id 1 \
-    --result_path ./output/512
+    --checkpoint /path/checkpoint.pth \
+    --gpu_id 0 \
+    --result_path /path
