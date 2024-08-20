@@ -117,7 +117,7 @@ we use the evaluation code below to generate results:
 
 [PySODMetrics: A simple and efficient implementation of SOD metrics](https://github.com/lartpang/PySODMetrics)
 
-It should be noted that，We modify the calculation method of the max F-measure from selecting a unified highest threshold for all images to calculating the highest threshold for each individual image.
+It should be noted that，we modify the calculation method of the max F-measure from selecting a unified highest threshold for all images to calculating the highest threshold for each individual image.
 
 run ./scripts/eval.sh
 ```bash
