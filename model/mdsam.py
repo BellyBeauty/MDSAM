@@ -79,22 +79,20 @@ class MDSAM(nn.Module):
         return self.pe_layer(self.image_embedding_size).unsqueeze(0)
 
     def forward(self, img):
+        #get different layer's features of the image encoder
         features_list = self.image_encoder(img)
 
-        #获得encoder的最后一层输出
+        #get the output of the last layer of the encoder.
         deep_feature = self.deep_feautre_conv(features_list[-1].contiguous()) #256 * 32 * 32 -> 32 * 128 * 128
 
-        #将四个阶段的image_encoder的结果取出
         img_feature = self.fusion_block(features_list)
 
-        #提取中间输出进行深层次监督，防止模型过拟合与细节增强模块
+        #extract intermediate outputs for deep supervision to prevent model overfitting on the detail enhancement module.
         img_pe = self.get_dense_pe()
         coarse_mask, feature= self.mask_decoder(img_feature, img_pe)
 
-        #把粗糙mask还原到原尺寸
         coarse_mask = torch.nn.functional.interpolate(coarse_mask,[self.img_size,self.img_size], mode = 'bilinear', align_corners = False)
 
-        #获得最后输出
         mask = self.detail_enhance(img, feature, deep_feature)
 
         return mask, coarse_mask
