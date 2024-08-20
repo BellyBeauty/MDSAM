@@ -5,7 +5,7 @@ Shixuan Gao, Pingping Zhang, Tianyu Yan, Huchuan Lu
 
 Dalian University of Technology
 
-Paper:([arxiv:2408.04326v1](https://arxiv.org/abs/2401.10166))
+Paper:([arxiv:2408.04326v1](https://arxiv.org/html/2408.04326v1))
 </div>
 
 
